@@ -24,19 +24,19 @@ class CreateProductFunctionalTest {
     @Value("${app.baseUrl:http://localhost}")
     private String testBaseUrl;
 
-    private String baseUrl;
-    private String productListPageUrl;
+    private String createProductUrl;
+    private String productListUrl;
 
 
     @BeforeEach
     void setupTest() {
-        baseUrl = String.format("%s:%d/product/create", testBaseUrl, serverPort);
-        productListPageUrl = String.format("%s:%d/product/list", testBaseUrl, serverPort);
+        createProductUrl = String.format("%s:%d/product/create", testBaseUrl, serverPort);
+        productListUrl = String.format("%s:%d/product/list", testBaseUrl, serverPort);
     }
 
     @Test
     void createProduct_isCorrect(ChromeDriver driver) throws Exception {
-        driver.get(baseUrl);
+        driver.get(createProductUrl);
 
         WebElement nameInput = driver.findElement(By.id("nameInput"));
         nameInput.sendKeys("Sampo Cap Bambang");
@@ -47,7 +47,7 @@ class CreateProductFunctionalTest {
         WebElement button = driver.findElement(By.tagName("button"));
         button.click();
 
-        driver.get(productListPageUrl);
+        driver.get(productListUrl);
 
         WebElement productListTable = driver.findElement(By.tagName("table"));
         assertTrue(productListTable.getText().contains("Sampo Cap Bambang"));

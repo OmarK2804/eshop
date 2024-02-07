@@ -1,16 +1,11 @@
 ## Reflection 1
 
-### • You already implemented two new features using Spring Boot. Check again your source code and evaluate the coding standards that you have learned in this module. Write clean code principles and secure coding practices that have been applied to your code.  If you find any mistake in your source code, please explain how to improve your code. Please write your reflection inside the repository's README.md file.
+Java springboot(MVC) template urges me to be more adhere to coding standards. Springboot makes each part of the program completely apart, that makes the component of the program to be built and modified independently. This relates to coding principles to ensure maintainability and readability of the codebase.
 
-
+In the code, I implemented a standard naming conventions to make the code more readable. I also implement a secure coding practice by using UUID for the product id. At last, I also make a git branch for each feature as an implementation of separation of concern.
 
 ## Reflection 2
 
-### • After writing the unit test, how do you feel? How many unit tests should be made in a class? How to make sure that our unit tests are enough to verify our program? It would be good if you learned about code coverage. Code coverage is a metric that can help you understand how much of your source is tested. If you have 100% code coverage, does that mean your code has no bugs or errors? 
+1. Well, for the time being, I feel the unit test is already sufficient. I think the amount of unit tests in a class can be a lot. That is because we have to make a test for positive and negative scenario for each feature. Although code coverage does give a percentage of measure of whether the code contains bugs, 100% code coverage still doesn't ensure that there is no bug in the code.
 
-
-
-### • Suppose that after writing the CreateProductFunctionalTest.java along with the corresponding test case, you were asked to create another functional test suite that verifies the number of items in the product list. You decided to create a new Java class similar to the prior functional test suites with the same setup procedures and instance variables.
-### What do you think about the cleanliness of the code of the new functional test suite? Will the new code reduce the code quality? Identify the potential clean code issues, explain the reasons, and suggest possible improvements to make the code cleaner! Please write your reflection inside the repository's README.md file.
-
-
+2. Well although I think the code will still be clean and doesn't reduce its quality, it is redundant to create the new test because the test can be incorporated in the previous test.
