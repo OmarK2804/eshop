@@ -19,3 +19,13 @@ In the code, I implemented a standard naming conventions to make the code more r
 1. Lots of my codes in the test directory define the same product variables over and over again (redundant). So to fix it, I define the variables in the setUp method that will run before each test. Other than that, I also fix my update method in ProductRepository to return null as an error handling.
 
 2. In my opinion, my code has implemented the definition of CI/CD. CI is implemented by using sonarcloud and scorecard as code review tools and jacoco for code coverage. CD is implemented by using Koyeb as an auto-deploy mechanism.
+
+## Tutorial 3
+
+### Reflection
+
+1. For the SRP, I have moved the car controller class from product repository so product repository has single responsibility which is product. For the OCP, I moved the set UUID for product from the product model module to the product repository. For the ISP, the interfaces have already been segregated. For the DIP, I create interfaces for both Product and Car repository so Product and Car repository functions depend on interfaces.
+
+2. After applying SOLID, my code should be understandable, flexible, and maintainable. By applying SRP, the code is easier to maintain. By applying OCP, the code is more flexible as we can add new code without changing the source code. By applying ISP and DIP, the code becomes easier to test as it depends on abstractions.
+
+3. Not applying LSP can result in inconsistent behavior between classes.
