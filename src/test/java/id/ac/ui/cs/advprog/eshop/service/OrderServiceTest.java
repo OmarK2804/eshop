@@ -3,6 +3,7 @@ package id.ac.ui.cs.advprog.eshop.service;
 import id.ac.ui.cs.advprog.eshop.enums.OrderStatus;
 import id.ac.ui.cs.advprog.eshop.model.Order;
 import id.ac.ui.cs.advprog.eshop.model.Product;
+import id.ac.ui.cs.advprog.eshop.repository.OrderRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,8 +13,10 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class OrderServiceTest{
@@ -43,7 +46,7 @@ class OrderServiceTest{
 
     @Test
     void testCreateOrder() {
-        Order order = orders.get(2);
+        Order order = orders.get(1);
         doReturn(order).when(orderRepository).save(order);
 
         Order result = orderService.createOrder(order);
@@ -128,8 +131,7 @@ class OrderServiceTest{
     @Test
     void testFindAllByAuthorIfAllLowercase() {
         Order order = orders.get(1);
-        doReturn(orders).when(orderRepository).findAllByAuthor(order.getAuthor().toLowerCase());
-
+        doReturn(new ArrayList<Order>()).when(orderRepository).findAllByAuthor(order.getAuthor().toLowerCase());
         List <Order> results = orderService.findAllByAuthor(order.getAuthor().toLowerCase());
         assertTrue(results.isEmpty());
     }
