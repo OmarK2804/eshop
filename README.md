@@ -29,3 +29,9 @@ In the code, I implemented a standard naming conventions to make the code more r
 2. After applying SOLID, my code should be understandable, flexible, and maintainable. By applying SRP, the code is easier to maintain. By applying OCP, the code is more flexible as we can add new code without changing the source code. By applying ISP and DIP, the code becomes easier to test as it depends on abstractions.
 
 3. Not applying LSP can result in inconsistent behavior between classes.
+
+## Tutorial 4
+
+### Reflection
+
+1.  
