@@ -30,7 +30,7 @@ class PaymentTest{
         assertEquals("123456789", payment.getId());
         assertEquals("voucher", payment.getMethod());
         assertEquals("ESHOP1234ABC5678", payment.getPaymentData().get("VoucherCode"));
-        assertEquals(PaymentStatus.CHECKING_PAYMENT.getValue(), payment.getStatus());
+        assertEquals(PaymentStatus.CHECK_PAYMENT.getValue(), payment.getStatus());
     }
 
     @Test
@@ -38,12 +38,12 @@ class PaymentTest{
         Map<String, String> paymentCOD = new HashMap<>();
         paymentCOD.put("deliveryFee", "10");
         paymentCOD.put("address", "Bintaro");
-        Payment payment = new Payment("2", "CASH", paymentCOD);
+        Payment payment = new Payment("2", "COD", paymentCOD);
         assertTrue(payment.getPaymentCOD().containsKey("deliveryFee"));
         assertTrue(payment.getPaymentCOD().containsKey("address"));
-        assertEquals("CHECKING_PAYMENT", payment.getStatus());
+        assertEquals("CHECK_PAYMENT", payment.getStatus());
         assertEquals("2", payment.getId());
-        assertEquals("CASH", payment.getMethod());
+        assertEquals("COD", payment.getMethod());
         assertEquals("Bintaro", payment.getPaymentData().get("address"));
         assertEquals("10", payment.getPaymentData().get("deliveryFee"));
     }
