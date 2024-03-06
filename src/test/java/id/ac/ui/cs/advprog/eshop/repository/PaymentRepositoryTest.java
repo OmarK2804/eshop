@@ -32,10 +32,10 @@ public class PaymentRepositoryTest {
     }
     @Test
     void testSaveCreate(){
-        Payment payment = payments.get(1);
+        Payment payment = payments.getFirst();
         Payment result = paymentRepository.save(payment);
 
-        Payment findResult = paymentRepository.findById(payments.get(1).getId());
+        Payment findResult = paymentRepository.findById(payments.getFirst().getId());
         assertEquals(payment.getId(), result.getId());
         assertEquals(payment.getId(), findResult.getId());
         assertEquals(payment.getMethod(), findResult.getMethod());
@@ -44,7 +44,7 @@ public class PaymentRepositoryTest {
         assertEquals(payment.getPaymentData().get("VoucherCode"), findResult.getPaymentData().get("VoucherCode"));
     }
     @Test
-    void testVoucherInvalid(){
+    void testPaymentVoucherInvalid(){
         Map<String, String> invalidPayment = new HashMap<>();
         invalidPayment.put("VoucherCode", "INVALID");
         Payment tempPayment = new Payment("3", "voucher", invalidPayment);
@@ -57,7 +57,7 @@ public class PaymentRepositoryTest {
         assertEquals(PaymentStatus.REJECTED.getValue(), result.getStatus());
     }
     @Test
-    void testCODNoAddress(){
+    void testPaymentCodAddressIsEmpty(){
         Map<String, String> invalidPayment = new HashMap<>();
         invalidPayment.put("deliveryFee", "10");
         invalidPayment.put("address", "");
@@ -68,12 +68,12 @@ public class PaymentRepositoryTest {
         assertEquals(tempPayment.getId(), result.getId());
         assertEquals(tempPayment.getMethod(), result.getMethod());
         assertEquals(tempPayment.getPaymentData().get("address"), result.getPaymentData().get("address") );
-        assertEquals(tempPayment.getPaymentData().get("address"), result.getPaymentData().get("deliveryFee") );
+        assertEquals(tempPayment.getPaymentData().get("deliveryFee"), result.getPaymentData().get("deliveryFee") );
         assertTrue(result.getPaymentData().get("address").isEmpty());
         assertEquals(PaymentStatus.REJECTED.getValue(), result.getStatus());
     }
     @Test
-    void testCODNoDeliveryFee(){
+    void testPaymentCodDeliveryFeeIsEmpty(){
         Map<String, String> invalidPayment = new HashMap<>();
         invalidPayment.put("deliveryFee", "");
         invalidPayment.put("address", "Bintaro");
@@ -84,12 +84,12 @@ public class PaymentRepositoryTest {
         assertEquals(tempPayment.getId(), result.getId());
         assertEquals(tempPayment.getMethod(), result.getMethod());
         assertEquals(tempPayment.getPaymentData().get("address"), result.getPaymentData().get("address") );
-        assertEquals(tempPayment.getPaymentData().get("address"), result.getPaymentData().get("deliveryFee") );
+        assertEquals(tempPayment.getPaymentData().get("deliveryFee"), result.getPaymentData().get("deliveryFee") );
         assertTrue(result.getPaymentData().get("deliveryFee").isEmpty());
         assertEquals(PaymentStatus.REJECTED.getValue(), result.getStatus());
     }
     @Test
-    void testFindByIdIfIdFound() {
+    void testFindById() {
         for (Payment payment : payments) {
             paymentRepository.save(payment);
         }
@@ -101,7 +101,7 @@ public class PaymentRepositoryTest {
         assertEquals(payments.get(1).getStatus(), findResult.getStatus());
     }
     @Test
-    void testFindByIdIfIdNotFound() {
+    void testFindByIdIsEmpty() {
         for (Payment payment : payments) {
             paymentRepository.save(payment);
         }
@@ -120,7 +120,7 @@ public class PaymentRepositoryTest {
     }
 
     @Test
-    void testFindAllEmpty() {
+    void testFindIsEmpty() {
         List <Payment> payments1 = paymentRepository.findAll();
         assertTrue(payments1.isEmpty());
     }

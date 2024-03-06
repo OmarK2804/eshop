@@ -30,7 +30,7 @@ class PaymentTest{
     }
 
     @Test
-    void testAddPaymentCODDefaultStatus() {
+    void testAddPaymentCodDefaultStatus() {
         Map<String, String> paymentCOD = new HashMap<>();
         paymentCOD.put("deliveryFee", "10");
         paymentCOD.put("address", "Bintaro");
