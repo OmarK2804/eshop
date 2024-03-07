@@ -94,13 +94,13 @@ class PaymentServiceTest {
     @Test
     void testGetAllPayments() {
         doReturn(payments).when(paymentRepository).getPaymentAll();
-        List <Payment> results = (List<Payment>) paymentService.getAllPayments();
+        List <Payment> results = paymentService.getAllPayments();
         assertEquals(payments.size(), results.size());
     }
 
     @Test
     void testGetAllPaymentsIfEmpty() {
-        List<Payment> result = (List<Payment>) paymentService.getAllPayments();
+        List<Payment> result = paymentService.getAllPayments();
         verify(paymentRepository, times(1)).getPaymentAll();
         assertEquals(0, result.size());
     }
