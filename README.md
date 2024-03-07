@@ -29,3 +29,11 @@ In the code, I implemented a standard naming conventions to make the code more r
 2. After applying SOLID, my code should be understandable, flexible, and maintainable. By applying SRP, the code is easier to maintain. By applying OCP, the code is more flexible as we can add new code without changing the source code. By applying ISP and DIP, the code becomes easier to test as it depends on abstractions.
 
 3. Not applying LSP can result in inconsistent behavior between classes.
+
+## Tutorial 4
+
+### Reflection
+
+1. Based on Percival (2017) proposed self-reflective questions, I did all the things the questions asked. In my opinion, it is indeed useful in initiating the testing process and ensuring that code is developed with test coverage. However, it's important to know that we can enhance this by having a 100% test coverage and having a difference levels of test such as unit and functional testing.
+
+2. I did not fully apply the F.I.R.S.T principles in my code. For future improvements, I need to make more unit test so I can have 100% code coverage and also keep in mind to keep the code simple and fast.
